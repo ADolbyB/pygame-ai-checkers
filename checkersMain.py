@@ -1,5 +1,6 @@
 import pygame
 from checkers.constants import WIDTH, HEIGHT # special thanks to the init.py file 
+from checkers.board import Board
 
 # Create a main loop that checks for user input (mouse, keyboard, etc) 
 # Draw all the pieces, the board, etc.
@@ -14,7 +15,7 @@ pygame.display.set_caption('AI Mimimax a/B Pruning Checkers')
 def main (): ## define main event loop
     run = True
     clock = pygame.time.Clock()
-
+    board = Board()
 
     while run:
         clock.tick(FPS)
@@ -26,6 +27,10 @@ def main (): ## define main event loop
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pass
+
+        board.draw_squares(WIN)
+        pygame.display.update()
+
 
     pygame.quit()
 
