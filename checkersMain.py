@@ -1,5 +1,5 @@
 import pygame
-from checkers.constants import WIDTH, HEIGHT # special thanks to the init.py file 
+from checkers.constants import WIDTH, HEIGHT
 from checkers.board import Board
 
 # Create a main loop that checks for user input (mouse, keyboard, etc) 
@@ -7,10 +7,10 @@ from checkers.board import Board
 
 FPS = 60 # do we need this in the constants file? No, only references drawing the game
 
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # set caption for display here: shows up in top title bar
-pygame.display.set_caption('AI Mimimax a/B Pruning Checkers')
+pygame.display.set_caption('AI Minimax a/B Pruning Checkers')
 
 def main (): ## define main event loop
     run = True
@@ -28,9 +28,8 @@ def main (): ## define main event loop
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pass
 
-        board.draw_squares(WIN)
+        board.draw(WINDOW)
         pygame.display.update()
-
 
     pygame.quit()
 
