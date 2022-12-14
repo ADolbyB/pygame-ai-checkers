@@ -16,6 +16,21 @@ class Board:
             for col in range(row % 2, ROWS, 2): # even indices are red, odd are black
                 pygame.draw.rect(win, RED, (row * SQUARE_SIZE, col * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
 
+    def move(self, piece, row, col):
+        self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]
+        piece.move(row, col)
+
+        # if we move and hit the last or 1st row of the board, make piece a KING
+        if row == ROWS or row == 0:
+            piece.make_king()
+            if piece.color == WHITE:
+                self.white_kings += 1
+            else:
+                self.red_kings += 1
+
+    def get_piece(self, row, col):
+        return self.board[row][col]
+
     def create_board(self): # draw out checker piece arrangements: 3 total rows of 12 total pieces
         for row in range(ROWS):
             self.board.append([])
