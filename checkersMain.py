@@ -26,7 +26,10 @@ def main (): ## define main event loop
 
     while run:
         clock.tick(FPS)
-        pass
+    
+        if game.winner() != None:
+            print(game.winner()) # prints red (255, 0, 0) or white (255, 255, 255) to the terminal
+            run = False # Terminates the game
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

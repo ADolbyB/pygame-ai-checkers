@@ -13,7 +13,7 @@ class Board:
     def draw_squares(self, win):
         win.fill(BLACK)
         for row in range(ROWS):
-            for col in range(row % 2, ROWS, 2): # even indices are red, odd are black
+            for col in range(row % 2, COLS, 2): # even indices are red, odd are black
                 pygame.draw.rect(win, RED, (row * SQUARE_SIZE, col * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
 
     def move(self, piece, row, col):
@@ -21,6 +21,8 @@ class Board:
         piece.move(row, col)
 
         # if we move and hit the last or 1st row of the board, make piece a KING
+        # BUG: King counter increases when king revisits side that made it king (very easy fix)
+        # BUG: If a piece can double jump over multiple pieces and land on the same destination square you can't pick which exact move to make (involves changing the whole movement selection process)
         if row == ROWS - 1 or row == 0:
             piece.make_king()
             if piece.color == WHITE:
@@ -56,6 +58,20 @@ class Board:
     def remove(self, pieces):
         for piece in pieces:
             self.board[piece.row][piece.col] = 0
+            if piece != 0:
+                if piece.color == RED:
+                    self.red_left -= 1
+                else:
+                    self.white_left -= 1
+
+    def winner(self):
+        if self.red_left <= 0:
+            return WHITE
+        elif self.white_left <= 0:
+            return RED
+
+        else:
+            return None
 
     def get_valid_moves(self, piece):
         moves = {}

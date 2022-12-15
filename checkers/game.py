@@ -21,6 +21,9 @@ class Game:
         self.turn = RED
         self.valid_moves = {} # dictionary to define legal moves
 
+    def winner(self):
+        return self.board.winner()
+
     def reset(self): # user reset to start a new game
         self._init()
 
@@ -30,6 +33,7 @@ class Game:
             if not result: # if move is not legal (wrong space, etc)
                 self.selected = None # reset the selection
                 self.select(row, col) # reselect a row and column
+        
         piece = self.board.get_piece(row, col)
         if piece != 0 and piece.color == self.turn:
             self.selected = piece
@@ -49,7 +53,7 @@ class Game:
         else: 
             return False
 
-        return True # move is succesful
+        return True # move is successful
 
     
     def draw_valid_moves(self, moves): # loop through dictionary
