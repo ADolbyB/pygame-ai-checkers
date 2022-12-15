@@ -21,7 +21,7 @@ class Board:
         piece.move(row, col)
 
         # if we move and hit the last or 1st row of the board, make piece a KING
-        if row == ROWS or row == 0:
+        if row == ROWS - 1 or row == 0:
             piece.make_king()
             if piece.color == WHITE:
                 self.white_kings += 1
