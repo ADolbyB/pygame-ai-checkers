@@ -52,3 +52,90 @@ class Board:
                 piece = self.board[row][col]
                 if piece != 0:
                     piece.draw(win)
+
+    def remove(self, pieces):
+        for piece in pieces:
+            self.board[piece.row][piece.col] = 0
+
+    def get_valid_moves(self, piece):
+        moves = {}
+        left  = piece.col - 1
+        right = piece.col + 1
+        row = piece.row
+
+        if piece.color == RED or piece.king: # determine valid direction of movement
+            moves.update(self._traverse_left(row - 1, max(row - 3, -1), -1, piece.color, left))
+            moves.update(self._traverse_right(row - 1, max(row - 3, -1), -1, piece.color, right))
+        
+        if piece.color == WHITE or piece.king:
+            moves.update(self._traverse_left(row + 1, min(row + 3, ROWS), 1, piece.color, left))
+            moves.update(self._traverse_right(row + 1, min(row + 3, ROWS), 1, piece.color, right))
+
+        return moves # returns a dictionary
+
+    def _traverse_left(self, start, stop, step, color, left, skipped=[]): # step = up or down
+        moves = {}
+        last = []
+        for r in range(start, stop, step):
+            if left < 0:
+                break
+
+            current = self.board[r][left]
+            if current == 0: # found an empty square
+                if skipped and not last:
+                    break
+                elif skipped:
+                    moves[(r, left)] = last + skipped
+                else:
+                    moves[(r, left)] = last
+                
+                if last:
+                    if step == -1:
+                        row = max(r - 3, 0)
+                    else:
+                        row = min(r + 3, ROWS)
+                    moves.update(self._traverse_left(r + step, row, step, color, left - 1, skipped=last))
+                    moves.update(self._traverse_right(r + step, row, step, color, left + 1, skipped=last))
+                break # just in case ??
+            elif current.color == color: # if its a friendly square
+                break # do nothing, not a valid move
+            else:
+                last = [current]
+            
+            left -= 1
+        
+        return moves
+
+
+    def _traverse_right(self, start, stop, step, color, right, skipped=[]):
+        moves = {}
+        last = []
+        for r in range(start, stop, step):
+            if right >= COLS:
+                break
+
+            current = self.board[r][right]
+            if current == 0: # found an empty square
+                if skipped and not last:
+                    break
+                elif skipped:
+                    moves[(r, right)] = last + skipped
+                else:
+                    moves[(r, right)] = last
+                
+                if last:
+                    if step == -1:
+                        row = max(r - 3, 0)
+                    else:
+                        row = min(r + 3, ROWS)
+                    moves.update(self._traverse_left(r + step, row, step, color, right - 1, skipped=last))
+                    moves.update(self._traverse_right(r + step, row, step, color, right + 1, skipped=last))
+                break # just in case ??
+            elif current.color == color: # if its a friendly square
+                break # do nothing, not a valid move
+            else:
+                last = [current]
+            
+            right += 1
+
+        return moves

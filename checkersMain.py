@@ -1,6 +1,6 @@
 import pygame
-from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE
-from checkers.board import Board
+from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE, RED
+from checkers.game import Game
 
 # Create a main loop that checks for user input (mouse, keyboard, etc) 
 # Draw all the pieces, the board, etc.
@@ -22,7 +22,7 @@ def get_row_col_from_mouse(pos):
 def main (): ## define main event loop
     run = True
     clock = pygame.time.Clock()
-    board = Board()
+    game = Game(WINDOW)
 
     while run:
         clock.tick(FPS)
@@ -32,14 +32,12 @@ def main (): ## define main event loop
             if event.type == pygame.QUIT:
                 run = False
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN: # Select game piece with mouse
                 pos = pygame.mouse.get_pos()
                 row, col = get_row_col_from_mouse(pos)
-                piece = board.get_piece(row, col)
-                board.move(piece, 4, 3) # DEBUG: move any selected piece to 4, 3
+                game.select(row, col)
 
-        board.draw(WINDOW)
-        pygame.display.update()
+        game.update()
 
     pygame.quit()
 
