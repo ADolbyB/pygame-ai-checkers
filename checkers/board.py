@@ -18,7 +18,7 @@ class Board:
 
     # AI definition #1 for Minimax: White = AI
     def evaluate(self): # Evaluate score of the board (AI difficulty)
-        return self.white_left - self.red_left + (self.white_kings * 0.5 - self.red_kings * 0.5)
+        return self.white_left - self.red_left + (self.white_kings * 1.5 - self.red_kings * 1.5) # Edit: Increase weight of King Pieces
 
     # AI Minimax Function #2:
     def get_all_pieces(self, color):
@@ -29,20 +29,22 @@ class Board:
                     pieces.append(piece)
         return pieces
 
-
     def move(self, piece, row, col):
         self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]
         piece.move(row, col)
-
-        # if we move and hit the last or 1st row of the board, make piece a KING
-        # BUG: King counter increases when king revisits side that made it king (very easy fix)
-        # BUG: If a piece can double jump over multiple pieces and land on the same destination square you can't pick which exact move to make (involves changing the whole movement selection process)
-        if row == ROWS - 1 or row == 0:
-            piece.make_king()
-            if piece.color == WHITE:
-                self.white_kings += 1
-            else:
-                self.red_kings += 1
+        #print(f'self.white_left = {self.white_left}')      # debug
+        #print(f'self.white_kings = {self.white_kings}')    # debug
+        #print(f'self.red_left = {self.red_left}')          # debug
+        #print(f'self.red_kings = {self.red_kings}')        # debug
+        if (row == ROWS - 1 or row == 0):   # last or 1st row of the board, make piece a KING
+            aKing = piece.isKing()          # Check If Piece is already a King Piece (affects Minimax Score)
+            #print(f'aKing = {aKing}')      # debug
+            if aKing == False:
+                piece.make_king()
+                if piece.color == WHITE:
+                    self.white_kings += 1
+                else:
+                    self.red_kings += 1
 
     def get_piece(self, row, col):
         return self.board[row][col]
@@ -83,7 +85,6 @@ class Board:
             return WHITE
         elif self.white_left <= 0:
             return RED
-
         else:
             return None
 
@@ -131,11 +132,9 @@ class Board:
                 break # do nothing, not a valid move
             else:
                 last = [current]
-            
-            left -= 1
-        
-        return moves
 
+            left -= 1
+        return moves
 
     def _traverse_right(self, start, stop, step, color, right, skipped=[]):
         moves = {}
@@ -167,5 +166,4 @@ class Board:
                 last = [current]
             
             right += 1
-
         return moves
