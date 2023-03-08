@@ -10,10 +10,10 @@ def minimax(position, depth, max_player, game):
         return position.evaluate(), position
 
     if max_player:
-        maxEval = float("-inf")
+        maxEval = float("-100") # Edit: dont use -inf
         best_move = None
         for move in get_all_moves(position, WHITE, game):
-            evaluation = minimax(move, depth - 1, False, game)[0]
+            evaluation = minimax(move, depth - 1, True, game)[0] # edit: Max Player = True
             maxEval = max(maxEval, evaluation)
             if maxEval == evaluation:
                 best_move = move
@@ -21,10 +21,10 @@ def minimax(position, depth, max_player, game):
         return maxEval, best_move
 
     else:
-        minEval = float("inf")
+        minEval = float("100") # Edit: Don't Use inf
         best_move = None
         for move in get_all_moves(position, RED, game):
-            evaluation = minimax(move, depth - 1, True, game)[0]
+            evaluation = minimax(move, depth - 1, False, game)[0] # Edit: Max Player = False
             minEval = max(minEval, evaluation)
             if minEval == evaluation:
                 best_move = move
@@ -51,14 +51,3 @@ def get_all_moves(board, color, game):
             moves.append(new_board)
 
     return moves
-
-'''# AI "think stuff"
-def draw_moves(game, board, piece):
-    valid_moves = board.get_valid_moves(piece)
-    board.draw(game.win)
-    pygame.draw.circle(game.win, (0, 255, 0) (piece.x, piece.y), 50, 5) # debug: green circle
-    game.draw_valid_moves(valid_moves.keys())
-    pygame.display.update()
-    pygame.time.delay(100) # 100mS time sleep to see it being drawn
-'''
-

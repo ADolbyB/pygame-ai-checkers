@@ -11,7 +11,7 @@ FPS = 60 # do we need this in the constants file? No, only references drawing th
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # set caption for display here: shows up in top title bar
-pygame.display.set_caption('AI Minimax a/B Pruning Checkers')
+pygame.display.set_caption('AI Minimax Checkers')
 
 def get_row_col_from_mouse(pos):
     x, y = pos

@@ -21,6 +21,9 @@ class Piece:
     def make_king(self):
         self.king = True
 
+    def isKing(self):   # Bugfix to only allow a piece.make_king() to happen only once
+        return self.king == True
+
     def draw(self, win):
         radius = SQUARE_SIZE // 2 - self.PADDING
         pygame.draw.circle(win, GRAY, (self.x, self.y), radius + self.OUTLINE)
