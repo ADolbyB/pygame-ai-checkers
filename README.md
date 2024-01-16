@@ -1,6 +1,8 @@
-# Pygame Checkers
+# Pygame AI Checkers
 
-A Checkers AI game who plays against you (the player.) Here, I follow [This](https://www.youtube.com/watch?v=vnd3RfeG3NM&list=PLzMcBGfZo4-lkJr3sqpikNyVzbNZLRiT3) tutorial, and create my own Checkers game for some project research I am doing.
+This is a checkers AI game who plays against you (the player.) Here, I follow [This tutorial](https://www.youtube.com/watch?v=vnd3RfeG3NM&list=PLzMcBGfZo4-lkJr3sqpikNyVzbNZLRiT3), and create my own Checkers game for some project research I am doing.
+
+In this project, the Minimax algorithm is implemented as the AI player.
 
 ## Status:
 
@@ -8,8 +10,7 @@ A Checkers AI game who plays against you (the player.) Here, I follow [This](htt
 
 ## Notes:
 
-I needed to install pygame globally with
+If you are using the native python environment on a Linux OS, you will need to install pygame globally with
 ```bash
 sudo pip install pygame
 ```
-in Linux Mint 20.3.
