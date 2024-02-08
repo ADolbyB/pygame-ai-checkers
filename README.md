@@ -4,7 +4,7 @@ This is a checkers AI game who plays against you (the player.) Here, I follow [T
 
 In this project, the Minimax algorithm is implemented as the White AI player.
 
-## Preview:
+## Game Board Preview:
 
 <div align="center">
 
