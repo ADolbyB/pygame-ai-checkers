@@ -88,10 +88,21 @@ jobs:
       # Step 5: Build Linux executable with PyInstaller
       - name: Build Linux executable
         run: |
-          pyinstaller --onefile --name="Checkers-Game" checkersMain.py
-          # Note: --windowed doesn't work well on Linux, so we omit it
+          pyinstaller --onefile --add-data "checkers:checkers" \
+            --name="Checkers-Game" checkersMain.py
+        continue-on-error: false  # Make sure we see errors
       
-      # Step 6: Create Linux distribution package
+      # Step 6: Verify executable is built
+      - name: Verify build
+        run: |
+          echo "=== Checking dist folder ==="
+          ls -la dist/
+          if [ ! -f "dist/Checkers-Game" ]; then
+            echo "ERROR: Executable not found!"
+            exit 1
+          fi
+      
+      # Step 7: Create Linux distribution package
       - name: Package Linux distribution
         run: |
           mkdir -p Checkers-Linux
@@ -118,7 +129,7 @@ jobs:
           # Create tarball
           tar -czf Checkers-Linux-x64.tar.gz Checkers-Linux/
       
-      # Step 7: Upload Linux build as artifact
+      # Step 8: Upload Linux build as artifact
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v4
         with:
