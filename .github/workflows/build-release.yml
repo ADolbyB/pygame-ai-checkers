@@ -58,7 +58,8 @@ jobs:
 
   # JOB 2: Build Linux executable
   build-linux:
-    runs-on: ubuntu-latest
+    # Add older compatibility
+    runs-on: ubuntu-20.04
     
     steps:
       # Step 1: Check out the repository code
@@ -187,7 +188,7 @@ jobs:
             ### Windows (64-bit)
             - `Checkers-Windows-x64.zip` - Extract and run `Checkers-Game.exe`
             
-            ### Linux (64-bit)
+            ### Linux (Ubuntu 20.04+ 64-bit)
             - `Checkers-Linux-x64.tar.gz` - Extract and run `./run.sh`
             
             ## 🎯 Features
