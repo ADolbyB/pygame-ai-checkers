@@ -124,6 +124,8 @@ jobs:
             cd "$(dirname "$0")"
             ./Checkers-Game
             EOF
+          
+          # Make script executable
           chmod +x Checkers-Linux/run.sh
           
           # Create tarball
