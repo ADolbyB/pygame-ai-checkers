@@ -118,12 +118,12 @@ jobs:
           fi
           
           # Create installation script
-          cat > Checkers-Linux/run.sh << 'EOF'
-            #!/bin/bash
-            # Checkers Game Launcher
-            cd "$(dirname "$0")"
-            ./Checkers-Game
-            EOF
+          cat > Checkers-Linux/run.sh << 'END'
+          #!/bin/bash
+          # Checkers Game Launcher
+          cd "$(dirname "$0")"
+          ./Checkers-Game
+          END
           
           # Make script executable
           chmod +x Checkers-Linux/run.sh
