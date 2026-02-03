@@ -28,6 +28,6 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 CROWN = pygame.transform.scale(
-    pygame.image.load('checkers/assets/crown.png'),
+    pygame.image.load(resource_path('checkers/assets/crown.png')),
     (44, 25)
 )
