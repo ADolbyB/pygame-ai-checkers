@@ -33,8 +33,7 @@ jobs:
       
       # Step 4: Build Windows executable with PyInstaller
       - name: Build Windows executable
-        run: |
-          pyinstaller --onefile --windowed --name="Checkers-Game" checkersMain.py
+        run: pyinstaller checkers-game-win.spec
       
       # Step 5: Create Windows distribution package
       - name: Package Windows distribution
@@ -58,8 +57,7 @@ jobs:
 
   # JOB 2: Build Linux executable
   build-linux:
-    # Add older compatibility
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-22.04   # Add older compatibility
     
     steps:
       # Step 1: Check out the repository code
@@ -88,9 +86,7 @@ jobs:
       
       # Step 5: Build Linux executable with PyInstaller
       - name: Build Linux executable
-        run: |
-          pyinstaller --onefile --add-data "checkers:checkers" \
-            --name="Checkers-Game" checkersMain.py
+        run: pyinstaller checkers-game-linux.spec
         continue-on-error: false  # Make sure we see errors
       
       # Step 6: Verify executable is built
@@ -168,82 +164,15 @@ jobs:
         run: |
           echo "=== Build artifacts ==="
           ls -lh builds/
-      
+      - name: Prepare release notes
+        run: |
+          sed 's/{VERSION}/${{ github.ref_name }}/g' .github/release-notes.md > release-body.md
+
       # Step 4: Create the GitHub release
       - name: Create Release & Upload Assets
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name }}
-          name: Pygame Checkers ${{ github.ref_name }}
-          draft: false
-          prerelease: false
-          generate_release_notes: false
-          body: |
-            🎮 **Pygame AI Checkers - Release ${{ github.ref_name }}**
-            
-            An AI-powered checkers game built with Python and Pygame featuring minimax algorithm.
-            
-            ## 📦 Downloads
-            
-            ### Windows (64-bit)
-            - `Checkers-Windows-x64.zip` - Extract and run `Checkers-Game.exe`
-            
-            ### Linux (Ubuntu 20.04+ 64-bit)
-            - `Checkers-Linux-x64.tar.gz` - Extract and run `./run.sh`
-            
-            ## 🎯 Features
-            - Play against Minimax AI opponent
-            - Multiple difficulty levels
-            - Clean, intuitive interface
-            
-            ## 🚀 Quick Start
-            
-            **Windows:**
-            1. Download `Checkers-Windows-x64.zip`
-            2. Extract the ZIP file
-            3. Double-click `Checkers-Game.exe`
-            4. Enjoy!
-            
-            **Linux:**
-            Download `Checkers-Linux-x64.tar.gz`
-
-            ```bash
-            # Extract
-            tar -xzf Checkers-Linux-x64.tar.gz
-            cd Checkers-Linux
-            
-            # Run the game
-            ./run.sh
-            # OR
-            ./Checkers-Game
-            ```
-            
-            ## 💻 Running from Source
-            ```bash
-            # Clone the repository
-            git clone https://github.com/ADolbyB/pygame-ai-checkers.git
-            cd pygame-ai-checkers
-            
-            # Install dependencies
-            pip install pygame
-            
-            # Run the game
-            python checkers.py
-            ```
-            
-            ## 🔧 System Requirements
-            
-            - **Windows:** Windows 10 or later (64-bit)
-            - **Linux:** Ubuntu 20.04+ or equivalent (64-bit)
-            - **RAM:** 512 MB minimum
-            - **Display:** 800x600 minimum resolution
-            
-            ---
-            
-            **Build Information:**
-            - Python Version: 3.11
-            - Pygame Version: Latest
-            - Commit: ${{ github.sha }}
+          body_path: release-body.md 
           files: |
             builds/Checkers-Windows-x64.zip
             builds/Checkers-Linux-x64.tar.gz
