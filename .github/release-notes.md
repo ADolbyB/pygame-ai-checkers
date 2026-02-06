@@ -1,6 +1,6 @@
 🎮 **Pygame AI Checkers - Release {VERSION}**
 
-An AI-powered checkers game built with Python and Pygame featuring minimax algorithm with alpha-beta pruning.
+An AI-powered checkers game built with Python and Pygame featuring the minimax algorithm.
 
 ## 📦 Downloads
 
@@ -46,7 +46,7 @@ git clone https://github.com/ADolbyB/pygame-ai-checkers.git
 cd pygame-ai-checkers
 
 # Install dependencies
-pip install pygame
+pip install pygame==2.5.2
 
 # Run the game
 python checkersMain.py

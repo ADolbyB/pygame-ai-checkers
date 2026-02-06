@@ -23,13 +23,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'  # Use a recent stable Python version
+          python-version: '3.10'  # Use a recent stable Python version
       
       # Step 3: Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pygame pyinstaller
+          pip install pygame==2.5.2 pyinstaller
       
       # Step 4: Build Windows executable with PyInstaller
       - name: Build Windows executable
@@ -68,7 +68,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.10'
       
       # Step 3: Install system dependencies for Pygame
       - name: Install system dependencies
@@ -82,7 +82,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pygame pyinstaller
+          pip install pygame==2.5.2 pyinstaller
       
       # Step 5: Build Linux executable with PyInstaller
       - name: Build Linux executable
