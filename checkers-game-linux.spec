@@ -2,7 +2,7 @@
 
 a = Analysis(
     ['checkersMain.py'],
-    pathex=[],
+    pathex=['.'],
     binaries=[],
     datas=[('checkers', 'checkers')],
     hiddenimports=[
