@@ -1,13 +1,14 @@
 import pygame
-from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE, RED, WHITE
-from checkers.game import Game
+import minimax.algorithm
+import checkers.board, checkers.constants, checkers.game, checkers.piece
 from minimax.algorithm import minimax
+from checkers.constants import HEIGHT, WIDTH, WHITE, SQUARE_SIZE, RED
+from checkers.game import Game
 
 # Create a main loop that checks for user input (mouse, keyboard, etc) 
 # Draw all the pieces, the board, etc.
 
-FPS = 60 # do we need this in the constants file? No, only references drawing the game
-
+FPS = 60 # References drawing the game
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # set caption for display here: shows up in top title bar
@@ -19,8 +20,8 @@ def get_row_col_from_mouse(pos):
     col = x // SQUARE_SIZE
     return row, col
 
-
-def main (): ## define main event loop
+# Main event loop for game
+def main():
     run = True
     clock = pygame.time.Clock()
     game = Game(WINDOW)
@@ -44,9 +45,9 @@ def main (): ## define main event loop
                 pos = pygame.mouse.get_pos()
                 row, col = get_row_col_from_mouse(pos)
                 game.select(row, col)
-
+        
         game.update()
-
+    
     pygame.quit()
 
 main()
