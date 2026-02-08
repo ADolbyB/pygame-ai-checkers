@@ -9,6 +9,10 @@
 [![License](https://img.shields.io/github/license/ADolbyB/pygame-ai-checkers?style=for-the-badge)](LICENSE)
 [![Build & Release Pygame Checkers](https://img.shields.io/github/actions/workflow/status/ADolbyB/pygame-ai-checkers/build-release.yml?style=for-the-badge&logo=github&logoColor=white&label=BUILD%20%26%20RELEASE)](https://github.com/ADolbyB/pygame-ai-checkers/actions/workflows/build-release.yml)
 
+[![GitHub Stars](https://img.shields.io/github/stars/ADolbyB/pygame-ai-checkers?style=for-the-badge)](https://github.com/ADolbyB/pygame-ai-checkers/stargazers)
+[![Forks](https://img.shields.io/github/forks/ADolbyB/pygame-ai-checkers?style=for-the-badge&logo=github)](https://github.com/ADolbyB/pygame-ai-checkers/network/members)
+[![Repo Size](https://img.shields.io/github/repo-size/ADolbyB/pygame-ai-checkers?label=Repo%20Size&style=for-the-badge&logo=github)](https://github.com/ADolbyB/pygame-ai-checkers)
+
 [Overview](#-overview) • 
 [Features](#-features) • 
 [Installation](#-installation) • 
@@ -23,17 +27,17 @@
 
 ## 📋 Overview
 
-A fully functional checkers game built with Python and Pygame, featuring an AI opponent powered by the **Minimax algorithm**. This project demonstrates game development, AI decision-making, and object-oriented programming principles.
+A fully functional checkers game built with Python and Pygame, featuring an AI opponent powered by the **Minimax algorithm using Alpha-Beta pruning**. This project demonstrates game development, AI decision-making, and object-oriented programming principles.
 
 The AI opponent uses advanced game theory techniques to make intelligent moves, providing a challenging gameplay experience. Perfect for learning AI concepts, game development, or just enjoying a classic board game!
 
-> **Note:** This project was developed following [Tech With Tim's tutorial series](https://www.youtube.com/watch?v=vnd3RfeG3NM&list=PLzMcBGfZo4-lkJr3sqpikNyVzbNZLRiT3) as part of AI and game development research.
+> **Note:** The baseline for this project was developed following [Tech With Tim's tutorial series](https://www.youtube.com/watch?v=vnd3RfeG3NM&list=PLzMcBGfZo4-lkJr3sqpikNyVzbNZLRiT3) as part of AI and game development research.
 
 ---
 
 ## ✨ Features
 
-- 🤖 **Intelligent AI Opponent** - Powered by Minimax algorithm
+- 🤖 **Intelligent AI Opponent** - Powered by Minimax algorithm using Alpha-Beta pruning optimization.
 - 🎨 **Clean Graphics** - Smooth animations and intuitive interface
 - 🎯 **Valid Move Highlighting** - Shows all legal moves when a piece is selected
 - 👑 **King Pieces** - Automatic promotion and enhanced movement
@@ -82,9 +86,6 @@ The AI opponent uses advanced game theory techniques to make intelligent moves, 
    # Extract the archive
    tar -xzf Checkers-Linux-x64.tar.gz
    cd Checkers-Linux
-   
-   # Make executable (if needed)
-   chmod +x Checkers-Game
    
    # Run the game
    ./run.sh
@@ -148,8 +149,8 @@ Perfect if you want to modify the code or contribute to the project.
 - **Display:** 800x600 minimum resolution
 
 #### For Running from Source:
-- **Python:** 3.8 or higher
-- **Pygame:** 2.0 or higher
+- **Python:** 3.10 or higher
+- **Pygame:** 2.5.2 or higher
 - **OS:** Windows, Linux, or macOS
 
 ---
@@ -228,13 +229,15 @@ pygame-ai-checkers/
 
 ## 🧠 Algorithm
 
-### Minimax (without Alpha-Beta Pruning)
+### Minimax (with Alpha-Beta Pruning)
 
-The AI opponent uses the **Minimax algorithm**, a decision-making algorithm for two-player games. It evaluates all possible moves and chooses the optimal one.
+The AI opponent uses the **Minimax algorithm with Alpha-Beta Pruning**, a decision-making algorithm for two-player games. It evaluates all possible moves and chooses the optimal one. The Alpha-Beta pruning version of minimax is an
+optimized version to cut down AI decision time.
 
 **Key Concepts:**
 
 - **Minimax Tree**: Explores all possible game states up to a certain depth
+- **Alpha-beta pruning**: reduces number of nodes evaluated by ~50-90%
 - **Evaluation Function**: Scores board positions based on piece count and positioning
 - **Recursive Search**: Explores future moves by simulating opponent responses
 
@@ -246,11 +249,9 @@ The AI opponent uses the **Minimax algorithm**, a decision-making algorithm for 
 5. Select the move with the highest evaluation score
 
 **Performance:**
-- Search depth: configurable
+- Search depth: configurable (set to 5 levels currently)
 - Evaluation function considers piece values and board control
 
-Later on...adding A/B pruning:
-- Alpha-beta pruning reduces nodes evaluated by ~50-90%
 ---
 
 ## 📸 Screenshots
@@ -273,18 +274,18 @@ This project demonstrates:
 
 - **Object-Oriented Programming**: Classes for Board, Piece, and Game
 - **Game Development**: Pygame fundamentals, event handling, and rendering
-- **AI Algorithms**: Minimax decision-making
+- **AI Algorithms**: Minimax decision-making with Alpha-Beta pruning optimization
 - **Python Best Practices**: Clean code structure and modular design
+- **Alpha-Beta Pruning**: Eliminates branches that won't affect the final decision, significantly reducing computation
 
 ### Project Next Steps
 
-- Alpha-Beta Pruning: Eliminates branches that won't affect the final decision, significantly reducing computation
+- Create a neural network-based AI
 - Implement difficulty levels (varying search depth)
 - Add a two-player mode
 - Create a move history and undo feature
 - Implement endgame databases
 - Add sound effects and background music
-- Create a neural network-based AI
 
 ---
 
@@ -326,8 +327,5 @@ This project is licensed under the GNU GPL v3 License - see the [License](https:
 <div align="center">
 
 ### ⭐ If you found this project helpful, please consider giving it a star!
-
-[![Repo Size](https://img.shields.io/github/repo-size/ADolbyB/pygame-ai-checkers?label=Repo%20Size&style=for-the-badge&logo=github)](https://github.com/ADolbyB/pygame-ai-checkers)
-[![GitHub Stars](https://img.shields.io/github/stars/ADolbyB/pygame-ai-checkers?style=for-the-badge)](https://github.com/ADolbyB/pygame-ai-checkers/stargazers)
 
 </div>
