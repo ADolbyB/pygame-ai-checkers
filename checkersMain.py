@@ -31,7 +31,8 @@ def main():
         clock.tick(FPS)
 
         if game.turn == WHITE: # Start AI HERE:
-            value, new_board = minimax(game.get_board(), 3, True, game) # 3 = depth to explore
+            # 5 = depth to traverse
+            value, new_board = minimax(game.get_board(), 5, float('-inf'), float('inf'), True, game)
             game.ai_move(new_board)
     
         if game.winner() != None:
