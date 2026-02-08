@@ -1,4 +1,5 @@
 import pygame
+import math
 import minimax.algorithm
 import checkers.board, checkers.constants, checkers.game, checkers.piece
 from minimax.algorithm import minimax
@@ -30,7 +31,7 @@ def main():
         clock.tick(FPS)
 
         if game.turn == WHITE: # Start AI HERE:
-            value, new_board = minimax(game.get_board(), 3, WHITE, game)
+            value, new_board = minimax(game.get_board(), 3, True, game) # 3 = depth to explore
             game.ai_move(new_board)
     
         if game.winner() != None:

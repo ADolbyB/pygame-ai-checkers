@@ -1,6 +1,7 @@
 # File for Minimax AI Algo
 from copy import deepcopy
 import pygame
+import math # for INF
 
 RED = (255, 0, 0)
 WHITE = (255, 255, 255)
@@ -10,10 +11,10 @@ def minimax(position, depth, max_player, game):
         return position.evaluate(), position
 
     if max_player:
-        maxEval = float("-100") # Edit: dont use -inf
+        maxEval = float("-inf") # Edit: import math pkg for -INF
         best_move = None
         for move in get_all_moves(position, WHITE, game):
-            evaluation = minimax(move, depth - 1, True, game)[0] # edit: Max Player = True
+            evaluation = minimax(move, depth - 1, False, game)[0] # edit: Max Player = FALSE
             maxEval = max(maxEval, evaluation)
             if maxEval == evaluation:
                 best_move = move
@@ -21,11 +22,11 @@ def minimax(position, depth, max_player, game):
         return maxEval, best_move
 
     else:
-        minEval = float("100") # Edit: Don't Use inf
+        minEval = float("inf") # Edit: import math pkg for INF
         best_move = None
         for move in get_all_moves(position, RED, game):
-            evaluation = minimax(move, depth - 1, False, game)[0] # Edit: Max Player = False
-            minEval = max(minEval, evaluation)
+            evaluation = minimax(move, depth - 1, True, game)[0] # Edit: Min Player = TRUE
+            minEval = min(minEval, evaluation)
             if minEval == evaluation:
                 best_move = move
 
