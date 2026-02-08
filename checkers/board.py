@@ -18,7 +18,7 @@ class Board:
 
     # AI definition #1 for Minimax: White = AI
     def evaluate(self): # Evaluate score of the board (AI difficulty)
-        return self.white_left - self.red_left + (self.white_kings * 1.5 - self.red_kings * 1.5) # Edit: Increase weight of King Pieces
+        return (self.white_left + (self.white_kings * 2)) - (self.red_left + (self.red_kings * 2)) # Edit: Increase weight of King Pieces
 
     # AI Minimax Function #2:
     def get_all_pieces(self, color):
