@@ -1,6 +1,6 @@
-🎮 **Pygame AI Checkers - Release {VERSION}**
+# 🎮 **Pygame AI Checkers - Release {VERSION}**
 
-An AI-powered checkers game built with Python and Pygame featuring the minimax algorithm.
+An AI-powered checkers game built with Python and Pygame featuring the minimax algorithm **with Alpha-Beta Pruning**.
 
 ## 📦 Downloads
 
@@ -10,11 +10,11 @@ An AI-powered checkers game built with Python and Pygame featuring the minimax a
 
 ### Linux (64-bit)
 - `Checkers-Linux-x64.tar.gz` - Extract and run `./run.sh`
-- **Requirements:** Ubuntu 22.04+ / Debian 11+ / GLIBC 2.31+ or equivalent
+- **Requirements:** Ubuntu 22.04+ / Debian 11+ / GLIBC 2.35+ or equivalent
 
 ## 🎯 Features
 - Play against intelligent AI opponent
-- Minimax algorithm with alpha-beta pruning
+- Minimax algorithm **with Alpha-Beta pruning** traversing 5 levels
 - Clean, intuitive interface
 - Valid move highlighting
 - Automatic king promotion
