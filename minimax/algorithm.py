@@ -6,29 +6,35 @@ import math # for INF
 RED = (255, 0, 0)
 WHITE = (255, 255, 255)
 
-def minimax(position, depth, max_player, game):
+def minimax(position, depth, alpha, beta, max_player, game):
     if depth == 0 or position.winner() != None:
         return position.evaluate(), position
 
     if max_player:
-        maxEval = float("-inf") # Edit: import math pkg for -INF
+        maxEval = float('-inf') # Edit: import math pkg for -INF
         best_move = None
         for move in get_all_moves(position, WHITE, game):
-            evaluation = minimax(move, depth - 1, False, game)[0] # edit: Max Player = FALSE
-            maxEval = max(maxEval, evaluation)
-            if maxEval == evaluation:
+            evaluation = minimax(move, depth - 1, alpha, beta, False, game)[0] # edit: Max Player = FALSE
+            if evaluation > maxEval:
+                maxEval = evaluation
                 best_move = move
+            alpha = max(alpha, evaluation)
+            if beta <= alpha:
+                break   # Beta Cutoff
 
         return maxEval, best_move
 
     else:
-        minEval = float("inf") # Edit: import math pkg for INF
+        minEval = float('inf') # Edit: import math pkg for INF
         best_move = None
         for move in get_all_moves(position, RED, game):
-            evaluation = minimax(move, depth - 1, True, game)[0] # Edit: Min Player = TRUE
-            minEval = min(minEval, evaluation)
-            if minEval == evaluation:
+            evaluation = minimax(move, depth - 1, alpha, beta, True, game)[0] # Edit: Min Player = TRUE
+            if evaluation < minEval:
+                minEval = evaluation
                 best_move = move
+            beta = min(beta, minEval)
+            if beta <= alpha:
+                break   # Alpha Cutoff
 
         return minEval, best_move
 
