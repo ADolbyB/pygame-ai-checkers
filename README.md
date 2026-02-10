@@ -14,12 +14,12 @@
 [![Repo Size](https://img.shields.io/github/repo-size/ADolbyB/pygame-ai-checkers?label=Repo%20Size&style=for-the-badge&logo=github)](https://github.com/ADolbyB/pygame-ai-checkers)
 
 [Overview](#-overview) • 
-[Features](#-features) • 
-[Installation](#-installation) • 
+[Features](#-features) •
+[Screenshots](#-screenshots) •
 [How to Play](#-how-to-play) • 
+[Installation](#-installation) • 
 [Project Structure](#-project-structure) • 
-[Algorithm](#-algorithm) • 
-[Screenshots](#-screenshots)
+[Algorithm](#-algorithm)  
 
 </div>
 
@@ -28,8 +28,6 @@
 ## 📋 Overview
 
 A fully functional checkers game built with Python and Pygame, featuring an AI opponent powered by the **Minimax algorithm using Alpha-Beta pruning**. This project demonstrates game development, AI decision-making, and object-oriented programming principles.
-
-The AI opponent uses advanced game theory techniques to make intelligent moves, providing a challenging gameplay experience. Perfect for learning AI concepts, game development, or just enjoying a classic board game!
 
 > **Note:** The baseline for this project was developed following [Tech With Tim's tutorial series](https://www.youtube.com/watch?v=vnd3RfeG3NM&list=PLzMcBGfZo4-lkJr3sqpikNyVzbNZLRiT3) as part of AI and game development research.
 
@@ -43,6 +41,46 @@ The AI opponent uses advanced game theory techniques to make intelligent moves, 
 - 👑 **King Pieces** - Automatic promotion and enhanced movement
 - ⚡ **Optimized Performance** - Alpha-beta pruning (coming soon) reduces computation time
 - 🔄 **Turn-based Gameplay** - Alternating moves between player and AI
+
+---
+
+## 📸 Screenshots
+
+### Game Board
+
+<div align="center">
+
+![Game Board](checkers/assets/GameBoard.png)
+
+*The classic 8x8 checkers board with red and white pieces. The AI plays as white.*
+
+</div>
+
+---
+
+## 🎯 How to Play
+
+### Game Controls
+
+- **🖱️ Left Click** - Select a piece and move it to a valid position (marked by blue dots)
+- **❌ Window Close** - Exit the game
+
+### Rules
+
+1. **Red pieces** (you) move first
+2. **Regular pieces** can only move diagonally forward
+3. **Kings** (crowned pieces) can move diagonally in any direction
+4. **Capture** opponent pieces by jumping over them
+5. **Multiple jumps** are possible in a single turn
+6. **Win** by capturing all opponent pieces or blocking all their moves
+
+### Strategy Tips
+
+- Control the center of the board early
+- Advance pieces to the back row to create kings
+- Force the AI into defensive positions
+- Set up multi-jump opportunities
+- Protect your back row to prevent AI kings
 
 ---
 
@@ -144,59 +182,14 @@ Perfect if you want to modify the code or contribute to the project.
 
 #### For Pre-built Executables:
 - **Windows:** Windows 10 or later (64-bit)
-- **Linux:** Ubuntu 20.04+ or equivalent (64-bit)
+- **Linux:** Ubuntu 22.04+ or equivalent (64-bit)
 - **RAM:** 512 MB minimum
 - **Display:** 800x600 minimum resolution
 
 #### For Running from Source:
 - **Python:** 3.10 or higher
 - **Pygame:** 2.5.2 or higher
-- **OS:** Windows, Linux, or macOS
-
----
-
-### ⚠️ Troubleshooting
-
-**Windows - "Windows protected your PC" message:**
-- Click "More info" → "Run anyway"
-- This happens because the executable isn't digitally signed
-
-**Linux - Permission denied:**
-```bash
-chmod +x Checkers-Game
-./Checkers-Game
-```
-
-**Missing dependencies when running from source:**
-```bash
-pip install --upgrade pygame
-```
-
----
-
-## 🎯 How to Play
-
-### Game Controls
-
-- **🖱️ Left Click** - Select a piece and move it to a valid position (marked by blue dots)
-- **❌ Window Close** - Exit the game
-
-### Rules
-
-1. **Red pieces** (you) move first
-2. **Regular pieces** can only move diagonally forward
-3. **Kings** (crowned pieces) can move diagonally in any direction
-4. **Capture** opponent pieces by jumping over them
-5. **Multiple jumps** are possible in a single turn
-6. **Win** by capturing all opponent pieces or blocking all their moves
-
-### Strategy Tips
-
-- Control the center of the board early
-- Advance pieces to the back row to create kings
-- Force the AI into defensive positions
-- Set up multi-jump opportunities
-- Protect your back row to prevent AI kings
+- **OS:** Windows, Linux
 
 ---
 
@@ -251,20 +244,6 @@ optimized version to cut down AI decision time.
 **Performance:**
 - Search depth: configurable (set to 5 levels currently)
 - Evaluation function considers piece values and board control
-
----
-
-## 📸 Screenshots
-
-### Game Board
-
-<div align="center">
-
-![Game Board](checkers/assets/GameBoard.png)
-
-*The classic 8x8 checkers board with red and white pieces. The AI plays as white.*
-
-</div>
 
 ---
 
@@ -329,3 +308,9 @@ This project is licensed under the GNU GPL v3 License - see the [License](https:
 ### ⭐ If you found this project helpful, please consider giving it a star!
 
 </div>
+
+---
+
+### Topics
+
+`python` `ai` `checkers` `pygame` `minimax-algorithm` `ai-games` `game-theory` `artificial-intelligence` `alpha-beta pruning`
