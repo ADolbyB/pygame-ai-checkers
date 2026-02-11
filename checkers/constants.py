@@ -8,6 +8,7 @@ pygame.init()   # Initialize PyGame
 WIDTH, HEIGHT = 800, 800 # 800 pixels high by 800 pixels wide
 ROWS, COLS = 8, 8 # 8 rows by 8 columns = std checkers board
 SQUARE_SIZE = WIDTH//COLS # defines the area of one square
+TERMINAL_HEIGHT = 180 # Terminal height below game board
 
 # RGB Color Scheme for Pygame
 RED = (255, 0, 0) # define red color for pygame
