@@ -1,7 +1,7 @@
 # Handles the game and player's turn to move, available legal moves, etc
 import pygame
-from .constants import RED, WHITE, BLUE, SQUARE_SIZE
-from .board import Board
+from .constants import *
+from .board import *
 
 # Game Class interfaces with the board
 # Keeps game separate from main loop checking buttons, movement, etc

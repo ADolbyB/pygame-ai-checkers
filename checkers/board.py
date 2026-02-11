@@ -1,7 +1,7 @@
 # board class: responsible for draing the board and pieces
 import pygame
-from .constants import BLACK, ROWS, COLS, RED, WHITE, SQUARE_SIZE
-from .piece import Piece
+from .constants import *
+from .piece import *
 
 class Board:
     def __init__(self):
