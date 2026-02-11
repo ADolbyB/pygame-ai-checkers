@@ -1,5 +1,7 @@
-/checkers/__pycache__
-/minimax/__pycache__
+# Basic .gitignore for python builds
+
 /**/__pycache__
 /build
 /dist
+/other
+/other/*
