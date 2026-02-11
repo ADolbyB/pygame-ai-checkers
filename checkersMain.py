@@ -1,10 +1,10 @@
 import pygame
 import math
-import minimax.algorithm
-import checkers.board, checkers.constants, checkers.game, checkers.piece
-from minimax.algorithm import minimax
-from checkers.constants import HEIGHT, WIDTH, WHITE, SQUARE_SIZE, RED
-from checkers.game import Game
+from minimax.algorithm import *
+from checkers.board import *
+from checkers.constants import *
+from checkers.game import *
+from checkers.piece import *
 
 # Create a main loop that checks for user input (mouse, keyboard, etc) 
 # Draw all the pieces, the board, etc.
@@ -13,7 +13,7 @@ FPS = 60 # References drawing the game
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # set caption for display here: shows up in top title bar
-pygame.display.set_caption('AI Minimax Checkers')
+pygame.display.set_caption('Minimax AI Checkers with Alpha/Beta Pruning')
 
 def get_row_col_from_mouse(pos):
     x, y = pos
@@ -49,7 +49,7 @@ def main():
                 game.select(row, col)
         
         game.update()
-    
+
     pygame.quit()
 
 if __name__ == "__main__":
