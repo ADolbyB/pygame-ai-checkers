@@ -6,7 +6,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Pygame](https://img.shields.io/badge/Pygame-2.5.2+-00C853?style=for-the-badge&logo=python&logoColor=white)](https://www.pygame.org/)
-[![License](https://img.shields.io/github/license/ADolbyB/pygame-ai-checkers?style=for-the-badge)](LICENSE)
+[![License](https://img.shields.io/github/license/ADolbyB/pygame-ai-checkers?style=for-the-badge)](https://github.com/ADolbyB/pygame-ai-checkers/blob/main/LICENSE.md)
 [![Build & Release Pygame Checkers](https://img.shields.io/github/actions/workflow/status/ADolbyB/pygame-ai-checkers/build-release.yml?style=for-the-badge&logo=github&logoColor=white&label=BUILD%20%26%20RELEASE)](https://github.com/ADolbyB/pygame-ai-checkers/actions/workflows/build-release.yml)
 
 [![GitHub Stars](https://img.shields.io/github/stars/ADolbyB/pygame-ai-checkers?style=for-the-badge)](https://github.com/ADolbyB/pygame-ai-checkers/stargazers)
